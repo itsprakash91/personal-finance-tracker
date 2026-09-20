@@ -1,0 +1,14 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor/tooling
+.claude/
+.vscode/
+.idea/
+
+# Frontend (added once the frontend/ folder exists)
+node_modules/
+dist/
+.env
+.env.local

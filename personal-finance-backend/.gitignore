@@ -1,0 +1,39 @@
+HELP.md
+target/
+
+### Secrets (never commit real DB credentials) ###
+.env.properties
+.mvn/wrapper/maven-wrapper.jar
+
+### Local tooling (not part of the project) ###
+.claude/
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
