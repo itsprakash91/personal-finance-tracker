@@ -1,0 +1,10 @@
+ Backend me develop karne wale features (Build Order ke hisaab se):
+
+  1. Project skeleton — JPA entities (User, Account, Category, Transaction, Budget) + Spring Data repositories
+  3. Account CRUD — create/edit/archive, list, aur strict ownership check (user apna account hi dekh/touch kar sake)
+  4. Category CRUD — custom categories + registration par ~10 system default categories seed karna
+  5. Transaction CRUD — add/edit/delete + filter (account, category, date range) + pagination
+  6. Budget CRUD — per category-per month budget set karna + spend-vs-budget summary API (dashboard ke liye: total spent vs budgeted, per-category breakdown, category-wise pie
+     data)
+  7. Global exception handler — consistent error responses
+  8. Tests — especially authorization tests (dusre user ka data leak na ho)
