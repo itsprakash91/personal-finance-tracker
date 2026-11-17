@@ -44,6 +44,15 @@ built as a portfolio project, entirely on free tools/services.
 
 **Relationships:** User 1—N Account 1—N Transaction N—1 Category; Budget N—1 User, N—1 Category (scoped by month).
 
+**Primary key choice — `BIGINT GENERATED ALWAYS AS IDENTITY`, not UUID:** UUIDs give
+unguessable IDs (defense against ID-enumeration attacks) but cost readability while
+writing/debugging raw SQL. At this project's stage — a portfolio project where
+development speed and query readability matter more than defending against real
+attackers — plain auto-incrementing `BIGINT` IDs were chosen instead. `BIGINT` (not
+`INT`) so the range never becomes a constraint. Documented here as a deliberate
+trade-off, not an oversight — worth revisiting if this ever needed to defend against
+real adversarial traffic.
+
 ### ER Diagram
 
 ```mermaid
@@ -56,7 +65,7 @@ erDiagram
     CATEGORY ||--o{ BUDGET : "budgeted for"
     
     USER {
-        uuid id PK
+        bigint id PK
         string email
         string password_hash
         string display_name
@@ -64,33 +73,33 @@ erDiagram
         datetime created_at
     }
     ACCOUNT {
-        uuid id PK
-        uuid user_id FK
+        bigint id PK
+        bigint user_id FK
         string name
         string type "CHECKING | SAVINGS | CREDIT_CARD | CASH"
         decimal opening_balance
         boolean archived
     }
     CATEGORY {
-        uuid id PK
-        uuid user_id FK "nullable = system default"
+        bigint id PK
+        bigint user_id FK "nullable = system default"
         string name
         string type "INCOME | EXPENSE"
         string color
     }
     TRANSACTION {
-        uuid id PK
-        uuid account_id FK
-        uuid category_id FK
+        bigint id PK
+        bigint account_id FK
+        bigint category_id FK
         decimal amount "signed: +income / -expense"
         string description
         date transaction_date
         string notes
     }
     BUDGET {
-        uuid id PK
-        uuid user_id FK
-        uuid category_id FK
+        bigint id PK
+        bigint user_id FK
+        bigint category_id FK
         date month
         decimal amount
     }
