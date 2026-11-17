@@ -4,7 +4,7 @@ target/
 ### Secrets (never commit real DB credentials) ###
 .env.properties
 .mvn/wrapper/maven-wrapper.jar
-
+*.txt
 ### Local tooling (not part of the project) ###
 .claude/
 !**/src/main/**/target/
